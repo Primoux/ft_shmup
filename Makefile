@@ -26,12 +26,16 @@ INIT_SRCS		:=	init/init.c
 
 FPS_SRCS		:=	fps/fps.c
 
+PLAYER_SRCS		:=	player/game_loop.c \
+					player/player.c
+
 MAIN_SRCS		:=	main.c
 
 SRCS			:=	$(addprefix $(SRC_DIR), \
 					$(MAIN_SRCS) \
-					$(INIT_SRCS)\
-					$(FPS_SRCS))
+					$(INIT_SRCS) \
+					$(FPS_SRCS) \
+					$(PLAYER_SRCS))
 
 #-------------------------------- OBJECTS ------------------------------------#
 

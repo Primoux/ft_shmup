@@ -1,23 +1,23 @@
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabach <gabach@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 13:41:56 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/29 15:38:26 by gabach           ###   ########lyon.fr   */
+/*   Created: 2025/11/29 15:38:26 by gabach            #+#    #+#             */
+/*   Updated: 2025/11/29 17:07:04 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "shmup.h"
 #include "player.h"
 
-int	game(void)
+int	game_loop(t_player *player)
 {
-	int			c;
-	t_player	player;
+	int			c = 0;
 
 	initscr();
-	box(stdscr, ACS_VLINE, ACS_HLINE);
 
 	raw();
 	noecho();
@@ -25,13 +25,13 @@ int	game(void)
 	nodelay(stdscr, TRUE);
 	curs_set(0);
 
-	player = init_player();
+	*player = init_player();
 	while (c != 'q')
 	{
 		c = getch();
-		player_action(c, &player);
+		player_action(c, player);
+		print_fps();
 		refresh();
-		usleep(1000 / 60);
 	}
 	endwin();
 	return (0);

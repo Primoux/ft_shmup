@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabach <gabach@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:31:56 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/29 16:38:58 by gabach           ###   ########lyon.fr   */
+/*   Updated: 2025/11/29 16:59:07 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_player	init_player(void)
 	return (player);
 }
 
-void	obj_moov(int *row, int *col, char icon, char direction)
+void	obj_move(int *row, int *col, char icon, char direction)
 {
 	if (direction == 'r')
 	{
@@ -68,23 +68,17 @@ void	obj_moov(int *row, int *col, char icon, char direction)
 	}
 }
 
-
-void	player_shoot(t_player *player)
-{
-	
-}
-
 void	player_action(int c, t_player *player)
 {
 		if (c != -1)
 		{
 			if (c == 'd')
-				obj_moov(&player->y, &player->x, '>', 'r');
+				obj_move(&player->y, &player->x, '>', 'r');
 			if (c == 'a')
-				obj_moov(&player->y, &player->x, '<', 'l');
+				obj_move(&player->y, &player->x, '<', 'l');
 			if (c == 'w')
-				obj_moov(&player->y, &player->x, '^', 'u');
+				obj_move(&player->y, &player->x, '^', 'u');
 			if (c == 's')
-				obj_moov(&player->y, &player->x, 'v', 'd');
+				obj_move(&player->y, &player->x, 'v', 'd');
 		}
 }
