@@ -18,13 +18,21 @@ OBJ_DIR			=	.build/
 
 #-------------------------------- INCLUDES & FLAGS ---------------------------#
 
-INCLUDES		= -I $(INCLUDE_DIR) 
+INCLUDES		= -I $(INCLUDE_DIR)
 
 #-------------------------------- SOURCE FILES -------------------------------#
 
 INIT_SRCS		:=	init/init.c
 
 FPS_SRCS		:=	fps/fps.c
+
+LINKED_LIST_SRC	:=	linked_list/linked_list.c
+
+OBJECTS_SRC		:= objects/objects.c
+
+PROJECTILE_SRC	:= projectile/projectile.c
+
+OPONENTS_SRC	:= oponents/oponents.c
 
 PLAYER_SRCS		:=	player/game_loop.c \
 					player/player.c
@@ -35,7 +43,11 @@ SRCS			:=	$(addprefix $(SRC_DIR), \
 					$(MAIN_SRCS) \
 					$(INIT_SRCS) \
 					$(FPS_SRCS) \
-					$(PLAYER_SRCS))
+					$(PLAYER_SRCS) \
+					$(OBJECTS_SRC) \
+					$(PROJECTILE_SRC) \
+					$(LINKED_LIST_SRC) \
+					$(OPONENTS_SRC))
 
 #-------------------------------- OBJECTS ------------------------------------#
 

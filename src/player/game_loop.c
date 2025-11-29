@@ -11,27 +11,35 @@
 /* ************************************************************************** */
 
 #include "shmup.h"
+#include "projectile.h"
 #include "player.h"
+#include "oponents.h"
 
 int	game_loop(t_player *player)
 {
-	int			c = 0;
+	int			counter = 0;
+	int			ch = 0;
+	t_list		*projectiles = NULL;
+	t_list		*oponents = NULL;
 
 	initscr();
+	box(stdscr, ACS_VLINE, ACS_HLINE);
 
-	raw();
 	noecho();
 	timeout(0);
 	nodelay(stdscr, TRUE);
 	curs_set(0);
 
 	*player = init_player();
-	while (c != 'q')
+	while (ch != 'q')
 	{
-		c = getch();
-		player_action(c, player);
-		print_fps();
+		ch = getch();
+		actualize_projectiles(&projectiles, counter);
+		actualize_oponent(&oponents, counter, &projectiles);
+		player_action(ch, player, &projectiles);
 		refresh();
+		usleep(1000000 / 60);
+		counter++;
 	}
 	endwin();
 	return (0);
