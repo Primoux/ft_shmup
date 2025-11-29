@@ -1,6 +1,6 @@
 #-------------------------------- VARIABLES ----------------------------------#
 
-NAME			=	shmup
+NAME			=	ft_shmup
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -O3
 LDFLAGS			=	-lncurses
@@ -18,17 +18,20 @@ OBJ_DIR			=	.build/
 
 #-------------------------------- INCLUDES & FLAGS ---------------------------#
 
-INCLUDES		= -I $(INCLUDE_DIR) -I ./lib/libft/includes -I $(LIBMLX_DIR) 
+INCLUDES		= -I $(INCLUDE_DIR) 
 
 #-------------------------------- SOURCE FILES -------------------------------#
 
 INIT_SRCS		:=	init/init.c
 
+FPS_SRCS		:=	fps/fps.c
+
 MAIN_SRCS		:=	main.c
 
 SRCS			:=	$(addprefix $(SRC_DIR), \
 					$(MAIN_SRCS) \
-					$(INIT_SRCS))
+					$(INIT_SRCS)\
+					$(FPS_SRCS))
 
 #-------------------------------- OBJECTS ------------------------------------#
 
@@ -40,7 +43,7 @@ DEPENDENCIES	=	$(OBJS:.o=.d)
 
 all: $(NAME)
 
-$(NAME):  $(MLX) $(OBJS)
+$(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME)  $(LDFLAGS)
 
 $(OBJ_DIR)%.o: %.c

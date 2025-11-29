@@ -1,24 +1,24 @@
 #include "shmup.h"
 #include <ncurses.h>
 #include <stdio.h>
-#include <time.h>
+#include <unistd.h>
+
+int	gaming(t_game *game)
+{
+	while (1)
+	{
+		print_fps();
+	}
+}
 
 int	main(void)
 {
-	int		choice;
-	int		ch;
 	t_game	game;
 
-	init(&game);
-	clear();
-	noecho();
-	cbreak();
-	halfdelay(1);
-	while (true)
-	{
-		printw("Coucou\n");
-		refresh();
-	}
+	init();
+	game.player.live = 3;
+	game.player.score = 500;
+	gaming(&game);
 	endwin();
 	return (0);
 }
