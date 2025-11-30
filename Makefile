@@ -2,7 +2,7 @@
 
 NAME			=	ft_shmup
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -O3
+CFLAGS			=	-Wall -Wextra -O3 -g3
 LDFLAGS			=	-lncurses
 MAKEFLAGS		+=	-j $$(nproc)
 DEPS			=	-MMD -MP
@@ -24,7 +24,12 @@ INCLUDES		= -I $(INCLUDE_DIR)
 
 INIT_SRCS		:=	init/init.c
 
-UI_SRCS		:=	ui/fps.c
+UI_SRCS		:=	ui/fps.c \
+				ui/ui.c \
+				ui/scores.c \
+				ui/time.c \
+				ui/live.c \
+				ui/render_box.c 
 
 LINKED_LIST_SRC	:=	linked_list/linked_list.c
 

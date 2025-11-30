@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:31:56 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 10:03:29 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 11:37:44 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ t_player	init_player(void)
 
 	move(player.y, player.x);
 	addch(player.icon);
-
-	refresh();
-
 	return (player);
 }
 
@@ -36,6 +33,7 @@ void	player_action(int c, t_player *player, t_list **projectile)
 	{
 		if (c == 'd')
 		{
+
 			obj_move(&player->y, &player->x, '>', 'r');
 			player->direction = 'r';
 		}

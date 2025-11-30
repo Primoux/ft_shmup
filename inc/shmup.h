@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:50:08 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/29 17:39:15 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 11:55:00 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // INCLUDES
 
 # include "player.h"
+# include "ui.h"
 # include <ncurses.h>
 # include <stdbool.h>
 # include <stdlib.h>
@@ -26,17 +27,18 @@
 
 # define STAT_WIDTH (COLS / 6)
 # define GAME_WIDTH (5 * STAT_WIDTH)
+# define MIN_WIDTH 80
+# define MIN_HEIGHT 20
 
 // GLOBAL
 
 extern WINDOW *stats_win, *game_win;
-extern WINDOW *live_win, *score_win, *time_win;
+extern WINDOW *lives_win, *score_win, *time_win;
 
 // STRUCTS
 
 typedef struct s_game
 {
-	int			time;
 	bool		fps_on;
 	t_player	player;
 }				t_game;
@@ -44,6 +46,5 @@ typedef struct s_game
 // FUNCS
 
 void			init(void);
-void			print_fps(int c);
 
 #endif

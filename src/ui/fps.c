@@ -6,11 +6,12 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 16:27:20 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/29 18:07:08 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 11:52:12 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shmup.h"
+#include "ui.h"
 #include <sys/time.h>
 
 long	time_in_ms(void)
@@ -21,7 +22,7 @@ long	time_in_ms(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
-void	print_fps(int c)
+void	print_fps(int ch)
 {
 	const long	target_frame_time = 16667;
 	static long	frame_count = 0;
@@ -39,12 +40,15 @@ void	print_fps(int c)
 		fps_start = now;
 		frame_start = now;
 	}
-	if (c == KEY_F(3))
+	if (ch == KEY_F(3))
 		fps_color = (fps_color == 2) ? 1 : 2;
-	wattron(stats_win, COLOR_PAIR(fps_color));
-	mvwprintw(stats_win, 0, 1, "FPS: %3d", fps);
-	wattroff(stats_win, COLOR_PAIR(fps_color));
-	wrefresh(stats_win);
+	if (fps_color == 2)
+	{
+		wattron(stats_win, COLOR_PAIR(fps_color));
+		mvwprintw(stats_win, 0, 1, "FPS: %3d", fps);
+		wattroff(stats_win, COLOR_PAIR(fps_color));
+		wrefresh(stats_win);
+	}
 	elapsed = (time_in_ms() - frame_start) * 1000;
 	sleep_time = target_frame_time - elapsed;
 	if (sleep_time > 0)

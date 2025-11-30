@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:27:37 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 09:38:37 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 11:42:25 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 // INCLUDES
 
+# include "linked_list.h"
 # include <ncurses.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "linked_list.h"
 
 // CONST
 
@@ -27,23 +27,30 @@
 # define END_COL ((COLS / 6) * 6 - 2)
 # define END_LINE (LINES - 2)
 
+// DECLARATION
+
+typedef struct s_game	t_game;
+
 // STRUCTS
 
 typedef struct s_player
 {
-	int		x;
-	int		y;
-	char	icon;
-	char	direction;
-	int		live;
-	int		score;
-}			t_player;
+	int					x;
+	int					y;
+	char				icon;
+	char				direction;
+	int					lives;
+	int					score;
+	double				time;
+	int					invincibility;
+}						t_player;
 
 // FUNCS
 
-int			game_loop(t_player *player);
+int						game_loop(t_game *game);
 
-t_player	init_player(void);
-void	player_action(int c, t_player *player, t_list **projectile);
+t_player				init_player(void);
+void					player_action(int c, t_player *player,
+							t_list **projectile);
 
 #endif
