@@ -28,28 +28,33 @@ void	actualize_projectiles(t_list **projectiles, int counter)
 	while (current)
 	{
 		projectile = (t_projectile*)current->content;
-		if (obj_move(&(projectile->y), &(projectile->x), (projectile->icon), (projectile->direction)) == -1)
-		{
-			move((projectile->y), (projectile->x));
-			addch(' ');
-			if (last)
-			{
-				last->next = NULL;
-				ft_lstadd_back(projectiles, current->next);
-				ft_lstdelone(current, free);
-				current = last->next;
-			}
-			else
-			{
-				*projectiles = current->next;
-				ft_lstdelone(current, free);
-				current = *projectiles;
-			}
-		}
-		else {
-			last = current;
+		if (obj_move(&(projectile->y), &(projectile->x), (projectile->direction)) == -1)
+			current = lstdel_relink(projectiles, current, last);
+		else
 			current = current->next;
+		last = current;
+	}
+}
+
+void	kill_projectile(t_list **projectiles, int row, int col)
+{
+	t_list		*last;
+	t_list		*current;
+	t_projectile	*projectile;
+
+	current = *projectiles;
+	last = NULL;
+	while (current)
+	{
+		projectile = (t_projectile*)current->content;
+		if (projectile->x == col && projectile->y == row)
+		{
+			current = lstdel_relink(projectiles, current, last);
+			return;
 		}
+		else
+			current = current->next;
+		last = current;
 	}
 }
 
@@ -79,4 +84,25 @@ void	throw_projectile(int row, int column, char icon, char direction, t_list **p
 	if (!list)
 		return ;
 	ft_lstadd_back(projectiles, list);
+}
+
+void	render_projectiles(t_list **projectiles)
+{
+	t_list		*last;
+	t_list		*current;
+	t_projectile	*projectile;
+
+	if (*projectiles == NULL || !projectiles)
+		return ;
+	current = *projectiles;
+	last = NULL;
+	while (current)
+	{
+		projectile = (t_projectile*)current->content;
+		if (render_obj(projectile->y, projectile->x, projectile->icon) == - 1)
+			current = lstdel_relink(projectiles, current, last);
+		else
+			current = current->next;
+		last = current;
+	}
 }

@@ -12,44 +12,48 @@
 
 #include "objects.h"
 #include "shmup.h"
+#include <ncurses.h>
 
-int	obj_move(int *row, int *col, char icon, char direction)
+int	obj_move(int *row, int *col, char direction)
 {
+	int	end_rows, end_cols;
+	getmaxyx(game_win, end_rows, end_cols);
 	if (direction == 'r')
 	{
-		if (*col == END_COL) return (-1);
-		move(*row, *col);
-		addch(' ');
+		if (*col == end_cols - 1) return (-1);
 		(*col)++;
-		move(*row, *col);
-		addch(icon);
 	}
 	else if (direction == 'l')
 	{
-		if (*col == START_COL) return (-1);
-		move(*row, *col);
-		addch(' ');
+		if (*col == 1) return (-1);
 		(*col)--;
-		move(*row, *col);
-		addch(icon);
 	}
 	else if (direction == 'u')
 	{
-		if (*row == START_LINE) return (-1) ;
-		move(*row, *col);
-		addch(' ');
+		if (*row == 1) return (-1) ;
 		(*row)--;
-		move(*row, *col);
-		addch(icon);
 	}
 	else if (direction == 'd')
 	{
-		if (*row == END_LINE) return (-1) ;
-		move(*row, *col);
-		addch(' ');
+		if (*row == end_rows - 1) return (-1) ;
 		(*row)++;
-		move(*row, *col);
-		addch(icon);
 	}
+	return (0);
+}
+
+int	render_obj(int row, int col, char icon)
+{
+	chtype	ch;
+	char	c;
+
+	wmove(game_win, row, col);
+	ch = mvwinch(game_win, row, col);
+	c = ch & A_CHARTEXT;
+	if (c != ' ')
+	{
+		addch('#');
+		return (-1);
+	}
+	addch(icon);
 	return (0);
 }

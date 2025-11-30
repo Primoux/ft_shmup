@@ -6,14 +6,16 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:38:26 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 10:02:00 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 10:13:32 by gabach           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shmup.h"
+#include "objects.h"
 #include "projectile.h"
 #include "player.h"
 #include "oponents.h"
+#include <ncurses.h>
 
 int	game_loop(t_player *player)
 {
@@ -22,17 +24,31 @@ int	game_loop(t_player *player)
 	t_list		*projectiles = NULL;
 	t_list		*oponents = NULL;
 
-
 	*player = init_player();
 	while (ch != 'q')
 	{
 		ch = getch();
+
+		werase(game_win);
+
+		wattron(game_win, COLOR_PAIR(1));
+		box(game_win, ACS_VLINE, ACS_HLINE);
+		wattroff(game_win, COLOR_PAIR(1));
+
 		actualize_projectiles(&projectiles, counter);
+		//render_projectiles(&projectiles);
+
 		actualize_oponent(&oponents, counter, &projectiles);
+		//render_oponents(&oponents, &projectiles, player);
+
 		player_action(ch, player, &projectiles);
+		render_obj(player->y, player->x, player->icon);
+
 		print_fps(ch);
-		refresh();
+		wrefresh(game_win);
 		counter++;
 	}
+	ft_lstclear(&projectiles, free);
+	ft_lstclear(&oponents, free);
 	return (0);
 }

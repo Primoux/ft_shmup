@@ -41,7 +41,7 @@ typedef struct s_player
 
 // FUNCS
 
-int			game_loop(t_player *player);
+int	game_loop(t_player *player);
 
 t_player	init_player(void);
 void	player_action(int c, t_player *player, t_list **projectile);

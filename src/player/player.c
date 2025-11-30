@@ -21,6 +21,7 @@ t_player	init_player(void)
 	player.x = START_COL + 5;
 	player.y = LINES / 2;
 	player.icon = '>';
+	player.direction = 'r';
 
 	move(player.y, player.x);
 	addch(player.icon);
@@ -36,22 +37,26 @@ void	player_action(int c, t_player *player, t_list **projectile)
 	{
 		if (c == 'd')
 		{
-			obj_move(&player->y, &player->x, '>', 'r');
+			obj_move(&player->y, &player->x, 'r');
+			player->icon = '>';
 			player->direction = 'r';
 		}
 		if (c == 'a')
 		{
-			obj_move(&player->y, &player->x, '<', 'l');
+			obj_move(&player->y, &player->x, 'l');
+			player->icon = '<';
 			player->direction = 'l';
 		}
 		if (c == 'w')
 		{
-			obj_move(&player->y, &player->x, '^', 'u');
+			obj_move(&player->y, &player->x, 'u');
+			player->icon = '^';
 			player->direction = 'u';
 		}
 		if (c == 's')
 		{
-			obj_move(&player->y, &player->x, 'v', 'd');
+			obj_move(&player->y, &player->x, 'd');
+			player->icon = 'v';
 			player->direction = 'd';
 		}
 		if (c == ' ')

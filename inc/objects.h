@@ -15,6 +15,7 @@
 
 // FUNCS
 
-int	obj_move(int *row, int *col, char icon, char direction);
+int	obj_move(int *row, int *col, char direction);
+int	render_obj(int row, int col, char icon);
 
 #endif

@@ -6,13 +6,12 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 21:24:20 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 10:03:19 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 10:11:51 by gabach           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 #include "oponents.h"
-#include "player.h"
 
 void	actualize_oponent(t_list **oponents, int counter, t_list **projectiles)
 {
@@ -20,7 +19,7 @@ void	actualize_oponent(t_list **oponents, int counter, t_list **projectiles)
 	t_list		*current;
 	t_oponent	*oponent;
 
-	if (counter % 50 == 0)
+	if (counter % (100) == 0)
 		spawn_oponent(oponents);
 	if (*oponents == NULL || !oponents || counter % 10 != 0)
 		return ;
@@ -29,30 +28,35 @@ void	actualize_oponent(t_list **oponents, int counter, t_list **projectiles)
 	while (current)
 	{
 		oponent = (t_oponent*)current->content;
-		if ((rand() % 100 + 1) % 10 == 0)
+		if ((rand() % 100 + 1) % 20 == 0)
 			throw_projectile((oponent->y), (oponent->x), '-', (oponent->direction), projectiles);
-		if (obj_move(&(oponent->y), &(oponent->x), (oponent->icon), (oponent->direction)) == -1)
-		{
-			move((oponent->y), (oponent->x));
-			addch(' ');
-			if (last)
-			{
-				last->next = NULL;
-				ft_lstadd_back(oponents, current->next);
-				ft_lstdelone(current, free);
-				current = last->next;
-			}
-			else
-			{
-				*oponents = current->next;
-				ft_lstdelone(current, free);
-				current = *oponents;
-			}
-		}
-		else {
-			last = current;
+		if (obj_move(&(oponent->y), &(oponent->x), (oponent->direction)) == -1)
+			current = lstdel_relink(oponents, current, last);
+		else
 			current = current->next;
+		last = current;
+	}
+}
+
+void	kill_oponent(t_list **oponents, int row, int col)
+{
+	t_list		*last;
+	t_list		*current;
+	t_oponent	*oponent;
+
+	current = *oponents;
+	last = NULL;
+	while (current)
+	{
+		oponent = (t_oponent*)current->content;
+		if (oponent->x == col && oponent->y == row)
+		{
+			current = lstdel_relink(oponents, current, last);
+			return;
 		}
+		else
+			current = current->next;
+		last = current;
 	}
 }
 
@@ -82,4 +86,29 @@ void	spawn_oponent(t_list **oponents)
 	if (!list)
 		return ;
 	ft_lstadd_back(oponents, list);
+}
+
+void	render_oponents(t_list **oponents, t_list **projectiles, t_player *player)
+{
+	t_list		*last;
+	t_list		*current;
+	t_oponent	*oponent;
+
+	if (*oponents == NULL || !oponents)
+		return ;
+	current = *oponents;
+	last = NULL;
+	while (current)
+	{
+		oponent = (t_oponent*)current->content;
+		if (render_obj(oponent->y, oponent->x, oponent->icon) == - 1)
+		{
+			current = lstdel_relink(oponents, current, last);
+			kill_projectile(projectiles, oponent->y, oponent->x);
+			(player->score)++;
+		}
+		else
+			current = current->next;
+		last = current;
+	}
 }
