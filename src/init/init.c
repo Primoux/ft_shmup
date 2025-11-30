@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 11:00:17 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/29 18:06:20 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 09:39:45 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ void	init(void)
 	}
 	init_colors();  // init color pairs
 	init_windows(); // init different sub-windows
+	initscr();
+	box(stdscr, ACS_VLINE, ACS_HLINE);
 	noecho();
+	timeout(0);
 	cbreak();
 	keypad(stdscr, true);
-	halfdelay(1);
 	curs_set(0);
 	halfdelay(1);
 }
