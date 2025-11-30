@@ -11,12 +11,14 @@
 /* ************************************************************************** */
 
 #include "objects.h"
+#include "explosion.h"
 #include "obstacle.h"
 #include "oponents.h"
 #include "player.h"
 #include "projectile.h"
 #include "shmup.h"
 #include "ui.h"
+#include <stdio.h>
 
 int	game_loop(t_game *game)
 {
@@ -25,12 +27,14 @@ int	game_loop(t_game *game)
 	t_list	*projectiles;
 	t_list	*oponents;
 	t_list	*obstacles;
+	t_list	*explosions;
 
 	counter = 0;
 	ch = 0;
 	projectiles = NULL;
 	oponents = NULL;
 	obstacles = NULL;
+	explosions = NULL;
 	game->player = init_player();
 	while (ch != 'q' && game->player.lives >= 0)
 	{
@@ -43,7 +47,8 @@ int	game_loop(t_game *game)
 		refresh();
 		werase(game_win);
 		render_projectiles(&projectiles);
-		render_oponents(&oponents, &projectiles, &game->player);
+		render_explosion(&explosions);
+		render_oponents(&oponents, &projectiles, &game->player, &explosions);
 		render_obstacles(&obstacles, &projectiles);
 		render_player(&game->player, &projectiles, &oponents);
 		print_ui(*game);
@@ -53,5 +58,6 @@ int	game_loop(t_game *game)
 	ft_lstclear(&projectiles, free);
 	ft_lstclear(&obstacles, free);
 	ft_lstclear(&oponents, free);
+	ft_lstclear(&explosions, free);
 	return (0);
 }
