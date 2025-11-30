@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:50:08 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/29 17:04:17 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/29 17:39:15 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ extern WINDOW *live_win, *score_win, *time_win;
 typedef struct s_game
 {
 	int			time;
+	bool		fps_on;
 	t_player	player;
 }				t_game;
 
 // FUNCS
 
 void			init(void);
-void			print_fps(void);
+void			print_fps(int c);
 
 #endif

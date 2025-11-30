@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 11:00:17 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/29 16:42:52 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/29 18:06:20 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ WINDOW *live_win, *score_win, *time_win;
 void	init_colors(void)
 {
 	start_color();
-	init_pair(1, COLOR_WHITE, COLOR_WHITE); // Game: bleu
-	init_pair(2, COLOR_BLACK, COLOR_WHITE); // Game: bleu
+	init_pair(2, COLOR_BLACK, COLOR_WHITE);
+	init_pair(1, COLOR_WHITE, COLOR_WHITE);
 }
 
 void	init_windows(void)
@@ -32,16 +32,16 @@ void	init_windows(void)
 		game_win = subwin(stdscr, LINES - 1, GAME_WIDTH, 0, STAT_WIDTH);
 	else
 		game_win = subwin(stdscr, LINES, GAME_WIDTH, 0, STAT_WIDTH);
-	wattron(live_win, COLOR_PAIR(1)); // Bleu
+	wattron(live_win, COLOR_PAIR(1));
 	box(live_win, ACS_VLINE, ACS_HLINE);
 	wattroff(live_win, COLOR_PAIR(1));
-	wattron(time_win, COLOR_PAIR(1)); // Bleu
+	wattron(time_win, COLOR_PAIR(1));
 	box(time_win, ACS_VLINE, ACS_HLINE);
 	wattroff(time_win, COLOR_PAIR(1));
-	wattron(score_win, COLOR_PAIR(1)); // Bleu
+	wattron(score_win, COLOR_PAIR(1));
 	box(score_win, ACS_VLINE, ACS_HLINE);
 	wattroff(score_win, COLOR_PAIR(1));
-	wattron(game_win, COLOR_PAIR(1)); // Bleu
+	wattron(game_win, COLOR_PAIR(1));
 	box(game_win, ACS_VLINE, ACS_HLINE);
 	wattroff(game_win, COLOR_PAIR(1));
 }
@@ -49,17 +49,18 @@ void	init_windows(void)
 void	init(void)
 {
 	initscr();
-	init_colors();
-	init_windows();
-	noecho();
-	cbreak();
-	halfdelay(1);
-	curs_set(0);
-	halfdelay(1);
 	if (has_colors() == FALSE)
 	{
 		endwin();
-		printf("Your terminal does not support color\n");
+		printf("Error\nYour terminal does not support color\n");
 		exit(1);
 	}
+	init_colors();  // init color pairs
+	init_windows(); // init different sub-windows
+	noecho();
+	cbreak();
+	keypad(stdscr, true);
+	halfdelay(1);
+	curs_set(0);
+	halfdelay(1);
 }
