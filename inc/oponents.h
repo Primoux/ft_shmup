@@ -10,8 +10,8 @@
 
 // CONSTS
 
-# define SPAWN_RATE 199   // 0 - 199      199 is the max rate
-# define SHOOTING_RATE 99 // 0 - 99        99 is the max rate
+# define SPAWN_RATE 0   // 0 - 199      199 is the max rate
+# define SHOOTING_RATE 0 // 0 - 99        99 is the max rate
 
 // STRUCTS
 

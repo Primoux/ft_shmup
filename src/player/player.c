@@ -6,14 +6,15 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:31:56 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 14:33:22 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 17:28:53 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
-#include "oponents.h"
-#include "projectile.h"
 #include "objects.h"
+#include "oponents.h"
+#include "player.h"
+#include "projectile.h"
+#include "shmup.h"
 
 t_player	init_player(void)
 {
@@ -27,7 +28,6 @@ t_player	init_player(void)
 	player.score = 0;
 	player.direction = 'r';
 	player.time = 0.0f;
-
 	move(player.y, player.x);
 	addch(player.icon);
 	return (player);
@@ -62,7 +62,8 @@ void	player_action(int c, t_player *player, t_list **projectile)
 			player->direction = 'd';
 		}
 		if (c == ' ')
-			throw_projectile(player->y, player->x, 'o', player->direction, projectile);
+			throw_projectile(player->y, player->x, 'o', player->direction,
+				projectile);
 	}
 }
 
@@ -75,7 +76,7 @@ void	render_player(t_player *player, t_list **projectiles, t_list **oponents)
 		if (player->invincibility == 0)
 		{
 			(player->lives)--;
-			player->invincibility = 181;
+			player->invincibility = FRAME_RATE * 3;
 		}
 	}
 	if (player->invincibility != 0)
