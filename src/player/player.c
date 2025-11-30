@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "player.h"
+#include "projectile.h"
+#include "objects.h"
 
 t_player	init_player(void)
 {
@@ -28,57 +30,31 @@ t_player	init_player(void)
 	return (player);
 }
 
-void	obj_move(int *row, int *col, char icon, char direction)
+void	player_action(int c, t_player *player, t_list **projectile)
 {
-	if (direction == 'r')
+	if (c != -1)
 	{
-		if (*col == END_COL) return ;
-		move(*row, *col);
-		addch(' ');
-		(*col)++;
-		move(*row, *col);
-		addch(icon);
-	}
-	else if (direction == 'l')
-	{
-		if (*col == START_COL) return ;
-		move(*row, *col);
-		addch(' ');
-		(*col)--;
-		move(*row, *col);
-		addch(icon);
-	}
-	else if (direction == 'u')
-	{
-		if (*row == START_LINE) return ;
-		move(*row, *col);
-		addch(' ');
-		(*row)--;
-		move(*row, *col);
-		addch(icon);
-	}
-	else if (direction == 'd')
-	{
-		if (*row == END_LINE) return ;
-		move(*row, *col);
-		addch(' ');
-		(*row)++;
-		move(*row, *col);
-		addch(icon);
-	}
-}
-
-void	player_action(int c, t_player *player)
-{
-		if (c != -1)
+		if (c == 'd')
 		{
-			if (c == 'd')
-				obj_move(&player->y, &player->x, '>', 'r');
-			if (c == 'a')
-				obj_move(&player->y, &player->x, '<', 'l');
-			if (c == 'w')
-				obj_move(&player->y, &player->x, '^', 'u');
-			if (c == 's')
-				obj_move(&player->y, &player->x, 'v', 'd');
+			obj_move(&player->y, &player->x, '>', 'r');
+			player->direction = 'r';
 		}
+		if (c == 'a')
+		{
+			obj_move(&player->y, &player->x, '<', 'l');
+			player->direction = 'l';
+		}
+		if (c == 'w')
+		{
+			obj_move(&player->y, &player->x, '^', 'u');
+			player->direction = 'u';
+		}
+		if (c == 's')
+		{
+			obj_move(&player->y, &player->x, 'v', 'd');
+			player->direction = 'd';
+		}
+		if (c == ' ')
+			throw_projectil(player->y, player->x, 'o', player->direction, projectile);
+	}
 }
