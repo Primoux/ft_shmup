@@ -84,6 +84,10 @@ void	throw_projectile(int row, int column, char icon, char direction,
 	t_projectile	*projectile;
 	t_list			*list;
 
+	if (direction == 'r') column++;
+	if (direction == 'l') column--;
+	if (direction == 'u') row--;
+	if (direction == 'd') row++;
 	projectile = new_projectile(row, column, icon, direction);
 	if (!projectile)
 		return ;
