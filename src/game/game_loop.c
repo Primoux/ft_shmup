@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:38:26 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 17:12:06 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 18:54:44 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	game_loop(t_game *game)
 		render_oponents(&oponents, &projectiles, &game->player, &explosions);
 		render_obstacles(&obstacles, &projectiles);
 		render_player(&game->player, &projectiles, &oponents);
-		print_ui(*game);
+		print_ui(game);
 		limit_fps(FRAME_RATE);
 		game->player.time = counter++;
 	}
