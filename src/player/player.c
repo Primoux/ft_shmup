@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:31:56 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 14:25:54 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 14:33:22 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_player	init_player(void)
 	player.lives = GAME_LIVES;
 	player.score = 0;
 	player.direction = 'r';
+	player.time = 0.0f;
 
 	move(player.y, player.x);
 	addch(player.icon);
