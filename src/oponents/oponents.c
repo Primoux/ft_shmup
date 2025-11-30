@@ -115,7 +115,7 @@ void	render_oponents(t_list **oponents, t_list **projectiles,
 	while (current)
 	{
 		oponent = (t_oponent *)current->content;
-		if (render_obj(oponent->y, oponent->x, oponent->icon) == -1)
+		if (render_obj(oponent->y, oponent->x, oponent->icon, 2) == -1)
 		{
 			kill_projectile(projectiles, oponent->y, oponent->x);
 			current = lstdel_relink(oponents, current, last);
