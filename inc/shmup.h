@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:50:08 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 17:22:39 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 17:54:30 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_game
 {
 	bool		fps_on;
 	t_player	player;
+	char		*time;
 }				t_game;
 
 // FUNCS
