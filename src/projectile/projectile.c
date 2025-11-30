@@ -113,12 +113,8 @@ void	render_projectiles(t_list **projectiles)
 	while (current)
 	{
 		projectile = (t_projectile *)current->content;
-		if (render_obj(projectile->y, projectile->x, projectile->icon) == -1)
-			current = lstdel_relink(projectiles, current, last);
-		else
-		{
-			last = current;
-			current = current->next;
-		}
+		render_obj(projectile->y, projectile->x, projectile->icon, 2);
+		last = current;
+		current = current->next;
 	}
 }

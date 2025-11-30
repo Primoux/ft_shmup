@@ -12,6 +12,7 @@
 
 #include "objects.h"
 #include "shmup.h"
+#include <ncurses.h>
 
 int	obj_move(int *row, int *col, char direction)
 {
@@ -40,7 +41,7 @@ int	obj_move(int *row, int *col, char direction)
 	return (0);
 }
 
-int	render_obj(int row, int col, char icon)
+int	render_obj(int row, int col, char icon, int color)
 {
 	chtype	ch;
 	char	c;
@@ -49,9 +50,13 @@ int	render_obj(int row, int col, char icon)
 	c = ch & A_CHARTEXT;
 	if (c != ' ')
 	{
-		mvwprintw(game_win, row, col, "%c", icon);
+		wattron(game_win, color);
+		mvwprintw(game_win, row, col, "#");
+		wattroff(game_win, color);
 		return (-1);
 	}
+	wattron(game_win, color);
 	mvwprintw(game_win, row, col, "%c", icon);
+	wattroff(game_win, color);
 	return (0);
 }
