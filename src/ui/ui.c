@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 10:11:48 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 11:57:48 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 15:19:36 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	print_ui(t_game game, int ch)
 	{
 		if (game.player.invincibility % 30 < 10)
 		{
-			render_box(score_win, 4);
-			render_box(game_win, 4);
-			render_box(time_win, 4);
-			render_box(lives_win, 4);
+			render_box(score_win, 1);
+			render_box(game_win, 1);
+			render_box(time_win, 1);
+			render_box(lives_win, 1);
 		}
 		else
 		{
@@ -43,4 +43,8 @@ void	print_ui(t_game game, int ch)
 			render_box(lives_win, 3);
 		}
 	}
+	wrefresh(score_win);
+	wrefresh(time_win);
+	wrefresh(lives_win);
+	wrefresh(game_win);
 }
