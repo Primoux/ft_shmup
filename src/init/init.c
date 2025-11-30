@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 11:00:17 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 17:06:27 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 17:11:15 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	init_colors(void)
 {
 	start_color();
 	init_pair(0, COLOR_WHITE, COLOR_BLACK);
-	init_pair(1, COLOR_WHITE, COLOR_WHITE);
+	init_pair(1, COLOR_WHITE, COLOR_BLACK);
 	init_pair(2, COLOR_BLACK, COLOR_WHITE);
-	init_pair(3, COLOR_RED, COLOR_RED);
+	init_pair(3, COLOR_RED, COLOR_BLACK);
 	init_pair(4, COLOR_RED, COLOR_BLACK);
 }
 

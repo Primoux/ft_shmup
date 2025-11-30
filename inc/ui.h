@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 10:16:13 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 15:33:58 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 17:12:00 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 // FUNCS
 
 void	print_fps(int ch);
-void	print_ui(t_game game, int ch);
+void	print_ui(t_game game);
 void	print_score(t_game game);
 void	print_time(t_game game);
 void	print_lives(t_game game);

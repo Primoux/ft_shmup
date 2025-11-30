@@ -6,16 +6,15 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 10:11:48 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 15:19:36 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 17:11:55 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shmup.h"
 #include "ui.h"
 
-void	print_ui(t_game game, int ch)
+void	print_ui(t_game game)
 {
-	print_fps(ch);
 	print_score(game);
 	print_time(game);
 	print_lives(game);
