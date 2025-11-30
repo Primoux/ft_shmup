@@ -62,7 +62,7 @@ void	player_action(int c, t_player *player, t_list **projectile)
 			player->direction = 'd';
 		}
 		if (c == ' ')
-			throw_projectile(player->y, player->x, 'o', player->direction, projectile);
+			throw_projectile(player->y, player->x, 'o', player->direction, 5, projectile);
 	}
 }
 
