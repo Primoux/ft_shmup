@@ -24,7 +24,7 @@ INCLUDES		= -I $(INCLUDE_DIR)
 
 INIT_SRCS		:=	init/init.c
 
-FPS_SRCS		:=	fps/fps.c
+UI_SRCS		:=	ui/fps.c
 
 LINKED_LIST_SRC	:=	linked_list/linked_list.c
 
@@ -42,7 +42,7 @@ MAIN_SRCS		:=	main.c
 SRCS			:=	$(addprefix $(SRC_DIR), \
 					$(MAIN_SRCS) \
 					$(INIT_SRCS) \
-					$(FPS_SRCS) \
+					$(UI_SRCS) \
 					$(PLAYER_SRCS) \
 					$(OBJECTS_SRC) \
 					$(PROJECTILE_SRC) \
