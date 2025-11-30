@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 18:39:53 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 22:30:12 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 22:54:53 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	finish(t_game game)
 	mvwprintw(finish_win, win_height / 2 + 2, (win_width
 			- strlen("Press any key")) / 2, "Press any key");
 	wrefresh(finish_win);
+	sleep(2);
 	getch();
 }
