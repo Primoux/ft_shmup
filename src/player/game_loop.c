@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:38:26 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 11:26:33 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 13:25:49 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	game_loop(t_game *game)
 	projectiles = NULL;
 	oponents = NULL;
 	game->player = init_player();
-	game->player.invincibility = 200;
 	while (ch != 'q')
 	{
 		ch = getch();
@@ -38,7 +37,6 @@ int	game_loop(t_game *game)
 		print_ui(*game, ch);
 		refresh();
 		counter++;
-		game->player.invincibility--;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:27:37 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 11:42:25 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 13:29:15 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define START_LINE (1)
 # define END_COL ((COLS / 6) * 6 - 2)
 # define END_LINE (LINES - 2)
+# define GAME_LIVES 3
 
 // DECLARATION
 
