@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 16:27:20 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 15:45:47 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 15:46:09 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	print_fps(int ch)
 		fps_visible = !fps_visible;
 	if (fps_visible)
 	{
-		dprintf(2, "coucou\n");
 		wattron(stats_win, COLOR_PAIR(2));
 		mvwprintw(stats_win, 0, 1, "FPS: %3d", fps);
 		wattroff(stats_win, COLOR_PAIR(2));
