@@ -145,3 +145,21 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		last = last->next;
 	last->next = new;
 }
+
+
+t_list	*lstdel_relink(t_list **lst, t_list *current, t_list *last)
+{
+	if (last)
+	{
+		last->next = current->next;
+		ft_lstdelone(current, free);
+		current = last->next;
+	}
+	else
+	{
+		*lst = current->next;
+		ft_lstdelone(current, free);
+		current = *lst;
+	}
+	return (current);
+}

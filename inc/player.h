@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:27:37 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 13:29:15 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 14:21:50 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_player
 // FUNCS
 
 int						game_loop(t_game *game);
-
 t_player				init_player(void);
 void					player_action(int c, t_player *player,
 							t_list **projectile);

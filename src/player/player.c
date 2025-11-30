@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:31:56 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 13:26:57 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 14:25:54 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_player	init_player(void)
 	player.invincibility = 0;
 	player.lives = GAME_LIVES;
 	player.score = 0;
+	player.direction = 'r';
 
 	move(player.y, player.x);
 	addch(player.icon);
@@ -36,23 +37,26 @@ void	player_action(int c, t_player *player, t_list **projectile)
 	{
 		if (c == 'd')
 		{
-
-			obj_move(&player->y, &player->x, '>', 'r');
+			obj_move(&player->y, &player->x, 'r');
+			player->icon = '>';
 			player->direction = 'r';
 		}
 		if (c == 'a')
 		{
-			obj_move(&player->y, &player->x, '<', 'l');
+			obj_move(&player->y, &player->x, 'l');
+			player->icon = '<';
 			player->direction = 'l';
 		}
 		if (c == 'w')
 		{
-			obj_move(&player->y, &player->x, '^', 'u');
+			obj_move(&player->y, &player->x, 'u');
+			player->icon = '^';
 			player->direction = 'u';
 		}
 		if (c == 's')
 		{
-			obj_move(&player->y, &player->x, 'v', 'd');
+			obj_move(&player->y, &player->x, 'd');
+			player->icon = 'v';
 			player->direction = 'd';
 		}
 		if (c == ' ')

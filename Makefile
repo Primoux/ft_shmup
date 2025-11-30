@@ -2,7 +2,7 @@
 
 NAME			=	ft_shmup
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -O3 -g3
+CFLAGS			=	-Wall -Wextra -O3
 LDFLAGS			=	-lncurses
 MAKEFLAGS		+=	-j $$(nproc)
 DEPS			=	-MMD -MP
