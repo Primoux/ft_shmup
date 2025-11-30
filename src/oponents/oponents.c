@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 21:24:20 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 14:19:43 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 14:39:34 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void	actualize_oponent(t_list **oponents, int counter, t_list **projectiles)
 		if (obj_move(&(oponent->y), &(oponent->x), (oponent->direction)) == -1)
 			current = lstdel_relink(oponents, current, last);
 		else
+		{
+			last = current;
 			current = current->next;
-		last = current;
+		}
 	}
 }
 

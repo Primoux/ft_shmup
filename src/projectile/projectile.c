@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:45:38 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 14:19:57 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 14:39:18 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	actualize_projectiles(t_list **projectiles, int counter)
 				(projectile->direction)) == -1)
 			current = lstdel_relink(projectiles, current, last);
 		else
+		{
+			last = current;
 			current = current->next;
-		last = current;
+		}
 	}
 }
 
