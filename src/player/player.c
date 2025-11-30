@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:31:56 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/29 17:17:25 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 10:03:29 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	player_action(int c, t_player *player, t_list **projectile)
 			player->direction = 'd';
 		}
 		if (c == ' ')
-			throw_projectil(player->y, player->x, 'o', player->direction, projectile);
+			throw_projectile(player->y, player->x, 'o', player->direction, projectile);
 	}
 }

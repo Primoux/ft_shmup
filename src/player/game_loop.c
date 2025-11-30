@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:38:26 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 09:40:13 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 10:02:00 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	game_loop(t_player *player)
 		actualize_projectiles(&projectiles, counter);
 		actualize_oponent(&oponents, counter, &projectiles);
 		player_action(ch, player, &projectiles);
+		print_fps(ch);
 		refresh();
-		// usleep(1000000 / 60);
 		counter++;
 	}
 	return (0);

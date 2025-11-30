@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projectil.c                                        :+:      :+:    :+:   */
+/*   projectile.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabach <gabach@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:45:38 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/29 17:45:40 by gabach           ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 10:04:27 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	actualize_projectiles(t_list **projectiles, int counter)
 	t_list		*current;
 	t_projectile	*projectile;
 
-	if (*projectiles == NULL || !projectiles)
+	if (*projectiles == NULL || !projectiles || counter % 2 == 0)
 		return ;
 	current = *projectiles;
 	last = NULL;
@@ -53,30 +53,30 @@ void	actualize_projectiles(t_list **projectiles, int counter)
 	}
 }
 
-t_projectile	*new_projectil(int row, int col, char icon, char direction)
+t_projectile	*new_projectile(int row, int col, char icon, char direction)
 {
-	t_projectile *projectil;
+	t_projectile *projectile;
 
-	projectil = malloc(sizeof(t_projectile));
-	if (!projectil)
+	projectile = malloc(sizeof(t_projectile));
+	if (!projectile)
 		return (NULL);
-	projectil->x = col;
-	projectil->y = row;
-	projectil->direction = direction;
-	projectil->icon = icon;
-	return (projectil);
+	projectile->x = col;
+	projectile->y = row;
+	projectile->direction = direction;
+	projectile->icon = icon;
+	return (projectile);
 }
 
-void	throw_projectil(int row, int column, char icon, char direction, t_list **projectils)
+void	throw_projectile(int row, int column, char icon, char direction, t_list **projectiles)
 {
-	t_projectile	*projectil;
+	t_projectile	*projectile;
 	t_list		*list;
 
-	projectil = new_projectil(row, column, icon, direction);
-	if (!projectil)
+	projectile = new_projectile(row, column, icon, direction);
+	if (!projectile)
 		return ;
-	list = ft_lstnew((void*)projectil);
+	list = ft_lstnew((void*)projectile);
 	if (!list)
 		return ;
-	ft_lstadd_back(projectils, list);
+	ft_lstadd_back(projectiles, list);
 }

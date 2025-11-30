@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 11:00:17 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 09:39:45 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 09:55:00 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ WINDOW *live_win, *score_win, *time_win;
 void	init_colors(void)
 {
 	start_color();
-	init_pair(2, COLOR_BLACK, COLOR_WHITE);
 	init_pair(1, COLOR_WHITE, COLOR_WHITE);
+	init_pair(2, COLOR_BLACK, COLOR_WHITE);
 }
 
 void	init_windows(void)
@@ -58,11 +58,9 @@ void	init(void)
 	init_colors();  // init color pairs
 	init_windows(); // init different sub-windows
 	initscr();
-	box(stdscr, ACS_VLINE, ACS_HLINE);
 	noecho();
 	timeout(0);
 	cbreak();
 	keypad(stdscr, true);
 	curs_set(0);
-	halfdelay(1);
 }

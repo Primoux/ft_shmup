@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   oponents.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabach <gabach@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 21:24:20 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/29 21:24:22 by gabach           ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 10:03:19 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	actualize_oponent(t_list **oponents, int counter, t_list **projectiles)
 	{
 		oponent = (t_oponent*)current->content;
 		if ((rand() % 100 + 1) % 10 == 0)
-			throw_projectil((oponent->y), (oponent->x), '-', (oponent->direction), projectiles);
+			throw_projectile((oponent->y), (oponent->x), '-', (oponent->direction), projectiles);
 		if (obj_move(&(oponent->y), &(oponent->x), (oponent->icon), (oponent->direction)) == -1)
 		{
 			move((oponent->y), (oponent->x));
