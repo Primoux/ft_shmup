@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:50:08 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 22:25:44 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 23:02:42 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ typedef struct s_game
 	char		*time;
 	int			time_m;
 	int			time_s;
+	int			y_max;
+	int			x_max;
 }				t_game;
 
 // FUNCS
 
 void			init(t_game *game);
 void			finish(t_game game);
-int				menu(t_game game);
+int				menu();
 
 #endif

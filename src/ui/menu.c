@@ -53,7 +53,7 @@ void	print_menu(WINDOW *menu_win, int highlight)
 	wrefresh(menu_win);
 }
 
-int	menu(t_game game)
+int	menu(void)
 {
 	int	highlight;
 	int	choice;
@@ -103,8 +103,7 @@ int	menu(t_game game)
 	}
 	else
 	{
-		finish(game);
 		endwin();
-		exit(0);
+		return (1);
 	}
 }

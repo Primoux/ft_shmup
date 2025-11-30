@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 11:00:17 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/30 22:29:10 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/30 22:58:22 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	init(t_game *game)
 		printf("Error\nYour terminal does not support color\n");
 		exit(1);
 	}
+	getmaxyx(stdscr, game->y_max, game->x_max);
 	init_colors();
 	init_windows();
 	initscr();
