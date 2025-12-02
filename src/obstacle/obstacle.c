@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projectile.c                                       :+:      :+:    :+:   */
+/*   obstacle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:45:38 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 14:39:18 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/01 11:05:45 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,20 +100,17 @@ void	spawn_obstacle(t_list **obstacles)
 
 void	render_obstacles(t_list **obstacles, t_list **projectiles)
 {
-	t_list			*last;
 	t_list			*current;
 	t_obstacle	*obstacle;
 
 	if (!obstacles || *obstacles == NULL)
 		return ;
 	current = *obstacles;
-	last = NULL;
 	while (current)
 	{
 		obstacle = (t_obstacle *)current->content;
 		if (render_obj(obstacle->y, obstacle->x, obstacle->icon, 6) == -1)
 			kill_projectile(projectiles, obstacle->y, obstacle->x);
-		last = current;
 		current = current->next;
 	}
 }

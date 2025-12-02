@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projectile.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:45:38 by gabach            #+#    #+#             */
-/*   Updated: 2025/11/30 14:39:18 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/01 11:05:50 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,19 +102,16 @@ void	throw_projectile(int row, int column, char icon, char direction, int color,
 
 void	render_projectiles(t_list **projectiles)
 {
-	t_list			*last;
 	t_list			*current;
 	t_projectile	*projectile;
 
 	if (!projectiles || *projectiles == NULL)
 		return ;
 	current = *projectiles;
-	last = NULL;
 	while (current)
 	{
 		projectile = (t_projectile *)current->content;
 		render_obj(projectile->y, projectile->x, projectile->icon, projectile->color);
-		last = current;
 		current = current->next;
 	}
 }
